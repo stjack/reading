@@ -9,3 +9,19 @@ https://learning.oreilly.com/live-training/courses/sentiment-analysis-for-chatbo
 https://learning.oreilly.com/live-training/courses/introduction-to-knative/0636920272304/
 
 https://github.com/SayanSeth/Introduction-to-Data-Science-in-Python/blob/master/Assignments/Assignment%2B3.ipynb
+
+Goole Drive coding
+
+https://ammar.lanui.online/integrate-google-drive-rest-api-on-android-app-bc4ddbd90820
+
+// Create a zip file on Google drive
+com.google.api.services.drive.model.File metadata = new com.google.api.services.drive.model.File()
+                            .setParents(Collections.singletonList(task.getResult().getId()))
+                            .setMimeType("application/zip")
+                            .setStarred(false)
+                            .setName("fileName");
+
+Simplified version
+
+https://github.com/ammarptn/GDrive-Rest-Android
+
