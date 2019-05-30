@@ -2,3 +2,10 @@
 
 https://learning.oreilly.com/live-training/courses/getting-started-with-machine-learning/0636920262725/
 
+https://learning.oreilly.com/live-training/courses/deep-learning-for-natural-language-processing-nlp/0636920255635/
+https://learning.oreilly.com/live-training/courses/tensorflow-extended-data-validation-and-transform/0636920262206/
+https://learning.oreilly.com/live-training/courses/sentiment-analysis-for-chatbots-in-python/0636920238942/
+
+https://learning.oreilly.com/live-training/courses/introduction-to-knative/0636920272304/
+
+https://github.com/SayanSeth/Introduction-to-Data-Science-in-Python/blob/master/Assignments/Assignment%2B3.ipynb
