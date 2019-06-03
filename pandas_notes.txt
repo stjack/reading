@@ -1,5 +1,11 @@
 1. Selection by position using .loc & .iloc
 
 1) Indexing and select data
-
 https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html
+
+2)Group by
+
+https://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html
+
+Group by object
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html
