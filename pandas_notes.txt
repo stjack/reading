@@ -9,3 +9,9 @@ https://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html
 
 Group by object
 https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html
+
+
+1) Bug of PYODBC
+  --below SQL would return NULL using PYODBC because of function index_col used in where condition
+  
+SQL_INDEX="SELECT      distinct o.name as table_name,i.name as index_name, index_col(o.name, i.indid, c.colid, o.uid) as indexed_column_name, i.status as index_status FROM     sysobjects o     INNER JOIN sysindexes i on i.id = o.id    INNER JOIN syscolumns c on c.id = o.id WHERE o.type='U'  and index_col(o.name, i.indid, c.colid, o.uid) <> null   "
