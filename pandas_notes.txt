@@ -15,3 +15,34 @@ https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.grou
   --below SQL would return NULL using PYODBC because of function index_col used in where condition
   
 SQL_INDEX="SELECT      distinct o.name as table_name,i.name as index_name, index_col(o.name, i.indid, c.colid, o.uid) as indexed_column_name, i.status as index_status FROM     sysobjects o     INNER JOIN sysindexes i on i.id = o.id    INNER JOIN syscolumns c on c.id = o.id WHERE o.type='U'  and index_col(o.name, i.indid, c.colid, o.uid) <> null   "
+
+
+2) Filter pandas with another one-column dataframe
+
+  a.     Group by count of rows, exclude row with count>=1, then change all 'TABLE_NAME' to list , this list will be used as lookup list
+   lookup=list(grouped.filter(lambda x: x['TABLE_FLAG'].count() <= 1)['TABLE_NAME'])
+===> 
+   ['HRI_PS_UBS_GCRS_CUR_VW', 'HRI_PS_UBS_NC_EMP_CUR_VW', ......]
+   
+  b. Orgin data frame looks like 
+
+
+   OWNER_x                    TABLE_NAME     OWNER_y     _merge      TABLE_FLAG
+  RKYC_DBO        HRI_PS_UBS_GCRS_CUR_VW         NaN  left_only         unknown
+  RKYC_DBO      HRI_PS_UBS_NC_EMP_CUR_VW         NaN  left_only         unknown
+  RKYC_DBO     HRI_PS_UBS_WORKLOC_CUR_VW         NaN  left_only         unknown
+RKYC_EM_01  TCLIENT_RELIANCE_LETTER_JRNL    RKYC_DBO       both  Schema Changed
+RKYC_EM_01            TCLIENT_STPPRODBIA    RKYC_DBO       both  Schema Changed
+RKYC_EM_01                  TCMMNCT_JRNL    RKYC_DBO       both  Schema Changed
+  RKYC_DBO          TSTG_ADDING_PRODUCTS  RKYC_EM_01       both  Schema Changed
+  RKYC_DBO                 TSTG_BASECODE  RKYC_EM_01       both  Schema Changed
+  RKYC_DBO                TSTG_MIFID_AMD  RKYC_EM_01       both  Schema Changed
+  RKYC_DBO                  TSTG_ODI_REP  RKYC_EM_01       both  Schema Changed
+RKYC_EM_01   TTRADE_REGULATION_EMIR_JRNL    RKYC_DBO       both  Schema Changed
+
+ c. If value of TABLE_NAME contains any value in list lookup, then keep data , otherwise, NOT keep the row
+ -- Using apply + lambda to do this 
+ 
+ tab_out[tab_out['TABLE_NAME'].apply(lambda x: x in lookup)]
+ 
+ 
