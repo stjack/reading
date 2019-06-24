@@ -7,3 +7,4 @@ https://www.ukougconferences.org.uk/ukoug/frontend/xt/token.csp?token=7A2OpnuQik
 3. Adb command connect to WiFi
 https://stackoverflow.com/questions/8708886/connecting-to-wi-fi-using-adb-shell
      
+https://developer.android.com/things/hardware/wifi-adb
