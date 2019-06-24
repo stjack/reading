@@ -4,4 +4,6 @@ https://www.ukougconferences.org.uk/ukoug/frontend/xt/token.csp?token=7A2OpnuQik
 2. Nodejs for android :
      https://github.com/dna2github/dna2oslab/tree/master/android/build
      
+3. Adb command connect to WiFi
+https://stackoverflow.com/questions/8708886/connecting-to-wi-fi-using-adb-shell
      
