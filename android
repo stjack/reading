@@ -11,3 +11,6 @@ https://source.android.com/devices/input/getevent
 
 2. Dumpsys
 https://stackoverflow.com/questions/11201659/whats-the-android-adb-shell-dumpsys-tool-and-what-are-its-benefits
+
+Official document , key !!
+https://developer.android.com/studio/command-line/dumpsys
