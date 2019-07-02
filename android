@@ -7,3 +7,7 @@ https://android.stackexchange.com/questions/26261/documentation-for-adb-shell-ge
 
 -- Android backgroup event monitor
 https://source.android.com/devices/input/getevent
+
+
+2. Dumpsys
+https://stackoverflow.com/questions/11201659/whats-the-android-adb-shell-dumpsys-tool-and-what-are-its-benefits
