@@ -4,3 +4,6 @@ https://www.softteco.com/blog/android-writing-events-low-level-touch-screen-auto
 https://stackoverflow.com/questions/17259809/can-anyone-explain-this-command-fully-adb-shell-sendevent-device-type-code
 
 https://android.stackexchange.com/questions/26261/documentation-for-adb-shell-getevent-sendevent
+
+-- Android backgroup event monitor
+https://source.android.com/devices/input/getevent
