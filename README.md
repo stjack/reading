@@ -30,3 +30,6 @@ http://wossoneri.github.io/2018/12/09/[Android][Framework]mastering-system-jar-a
 
 [Android][Framework]设置默认WiFi配置
 http://wossoneri.github.io/2018/11/14/[Android][Framework]Set-default-wifi-ap-conf/
+
+
+http://beyondthegeek.com/2018/11/30/how-to-create-custom-framework-apis/
