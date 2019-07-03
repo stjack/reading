@@ -13,6 +13,15 @@ https://developer.android.com/things/hardware/wifi-adb
 4.  Remount Android system partition
 
 https://stackoverflow.com/questions/6066030/read-only-file-system-on-android
+
 https://forum.xda-developers.com/showthread.php?t=1357056
+
 https://stackoverflow.com/questions/13971195/modify-java-code-in-framework-jar
+
 https://stackoverflow.com/questions/36005272/replace-only-framework-jar-its-relevant-libraries-on-android-marshmallow
+
+https://stackoverflow.com/questions/27441398/how-to-put-my-libraries-in-front-of-android-jar-by-editing-build-gradle-in-andro
+
+
+https://bitlog.it/mobile/injecting-rogue-code-into-stock-android-roms/
+
