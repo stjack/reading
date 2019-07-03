@@ -25,3 +25,8 @@ https://stackoverflow.com/questions/27441398/how-to-put-my-libraries-in-front-of
 
 https://bitlog.it/mobile/injecting-rogue-code-into-stock-android-roms/
 
+[Android][Framework]系统jar包，sdk的制作及引用
+http://wossoneri.github.io/2018/12/09/[Android][Framework]mastering-system-jar-and-sdk/
+
+[Android][Framework]设置默认WiFi配置
+http://wossoneri.github.io/2018/11/14/[Android][Framework]Set-default-wifi-ap-conf/
