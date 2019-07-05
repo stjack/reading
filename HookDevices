@@ -1,0 +1,23 @@
+1. https://juejin.im/post/5adafc1ef265da0b83365204
+
+Key is hook native method "native_get"
+
+//兼容低版本
+                setStaticObjectField(Build::class.java, Constant.MANUFACTURER, "OPPO")
+                setStaticObjectField(Build::class.java, Constant.BRAND, "OPPO")
+                setStaticObjectField(Build::class.java, Constant.PRODUCT, "R11 Plus")
+                setStaticObjectField(Build::class.java, Constant.DEVICE, "R11 Plus")
+                setStaticObjectField(Build::class.java, Constant.MODEL, "OPPO R11 Plus")
+                //应对反射获取机型的情况
+                val c = Class.forName("android.os.SystemProperties")
+                val m = c.getDeclaredMethod("native_get", String::class.java, String::class.java)
+                m.isAccessible = true
+                XposedBridge.hookMethod(m, object : XC_MethodHook() {
+                    override fun afterHookedMethod(param: MethodHookParam) {
+                        when (param.args[0].toString()) {
+                            "ro.product.manufacturer", "ro.product.brand" -> param.result = "OPPO"
+                            "ro.product.name", "ro.product.device" -> param.result = "R11 Plus"
+                            "ro.product.model" -> param.result = "OPPO R11 Plus"
+                        }
+                    }
+                })
