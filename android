@@ -14,3 +14,10 @@ https://stackoverflow.com/questions/11201659/whats-the-android-adb-shell-dumpsys
 
 Official document , key !!
 https://developer.android.com/studio/command-line/dumpsys
+
+
+3. Partition init sequence
+1)  https://source.android.com/devices/bootloader/partitions-images
+2) https://unix.stackexchange.com/questions/264223/how-to-modify-android-boot-sequence-in-order-to-boot-from-an-sd-card
+3) https://javigon.com/2012/08/24/from-poweron-to-android-the-boot-sequence/
+
