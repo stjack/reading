@@ -46,3 +46,56 @@ RKYC_EM_01   TTRADE_REGULATION_EMIR_JRNL    RKYC_DBO       both  Schema Changed
  tab_out[tab_out['TABLE_NAME'].apply(lambda x: x in lookup)]
  
  
+ 
+ 
+ 2. Pandas TOP N and TOP N in-group
+ 1) https://stackoverflow.com/questions/36702904/pandas-top-n-rows-top-n-rows-per-group-equivalent-for-row-number-overpartiti
+
+DataFrame:
+
+   dep  manager_id  salary
+0    B           5    5005
+1    A           6    5001
+2    C           8    5000
+3    A           7    5000
+4    B           0    5002
+ 
+ TOP 5:    df.head(5)
+ 
+ TOP 5, based on sorting columns:
+    df.sort_values(by=['manager_id', 'dep'], ascending=[False,True]).head(5)
+ 
+In-Group TOP 2
+  ---- top 2 salaries in each department (no duplicates) -----
+  --- equivalent for SQL: row_number() over(partition by DEP order by SALARY desc) ---
+  
+  https://pandas.pydata.org/pandas-docs/stable/reference/groupby.html 
+  https://pandas.pydata.org/pandas-docs/stable/reference/frame.html
+  
+(df.assign(rn=df.sort_values(['salary'], ascending=False)
+    .groupby(['dep'])
+    .cumcount() + 1)    
+    .query('rn < 3') 
+    .sort_values(['dep','rn'])
+ )
+ 
+ a) Using pd.assign (Assign new columns to a DataFrame.) to generate a new column rn, which represent the in-group sequence of each row
+ 
+ b) cumcount() 
+   ### Number each item in each group from 0 to the length of that group - 1. Since value being sorted in-group, so this function will return in-group order number....
+   
+ c) query 
+    ### Dataframe function !!! query column based on boolean expression !!!
+ 
+ ***** Using nlargest groupby function
+ df.loc[df.groupby('dep')['salary'].nlargest(2).reset_index()['level_1']]
+ 
+ *****second and third highest salaries in each department  *****
+    (df.assign(rn=df.sort_values(['salary'], ascending=False)
+        .groupby(['dep'])
+        .cumcount() + 1)    
+        .query('rn=2' or 'rn=3') ####   ==> return 2nd and 3rd largest 
+        .sort_values(['dep','rn'])
+     )
+ 
+ 
