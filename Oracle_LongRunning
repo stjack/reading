@@ -1,0 +1,17 @@
+--Only monitoring current active query
+select 
+  mon.USERNAME,
+  mon.MODULE,
+  mon.SERVICE_NAME, 
+  mon.CLIENT_IDENTIFIER,
+  mon.CLIENT_INFO,
+  mon.STATUS,
+  mon.SQL_EXEC_START,
+  mon.SQL_ID,
+  round((sysdate-mon.SQL_EXEC_START)*24*60,2) as "Query Execution Time(minutes)", 
+  ( select 
+    LISTAGG(SQL_TEXT, '') WITHIN GROUP (ORDER BY PIECE)
+  FROM v$sqltext
+  where sql_id =mon.SQL_ID
+  group by sql_id) as sql_full_text  
+from V$SQL_MONITOR mon where status not like '%DONE%'  and (sysdate-mon.SQL_EXEC_START)*24*60>30
