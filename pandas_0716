@@ -14,3 +14,10 @@ mf_index_list=mf_index_list.groupby(["table_name","index_name"]).agg({'indexed_c
 	for index,column in row.iteritems():
 		print(type(column).__name__)
 
+4. lambda -> change data type
+   df['startdate']=df['startdate'].apply(lambda x:  pd.Timestamp(year=x.year,month=x.month,day=x.day,unit ='s'))
+   
+5.  Generate meta Dataframe from dataframe(sybasePuddleDataframe)
+
+	columns = pd.DataFrame({'column_names': sybasePuddleDataframe.columns, 'datatypes': sybasePuddleDataframe.dtypes})
+	print(pd.DataFrame({'column_names': sybasePuddleDataframe.columns, 'datatypes': sybasePuddleDataframe.dtypes}))	
