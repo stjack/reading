@@ -8,4 +8,9 @@ mf_index_list=mf_index_list.groupby(["table_name","index_name"]).agg({'indexed_c
 2) backgroup, using this to generate a list of selected columns which used by a specific index
 
 
+2. How to iterate inside a Series to get type name of each column
+
+	# --Timestamp  datetime
+	for index,column in row.iteritems():
+		print(type(column).__name__)
 
