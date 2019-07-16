@@ -1,0 +1,11 @@
+1. Group by 
+
+mf_index_list=mf_index_list.groupby(["table_name","index_name"]).agg({'indexed_column_name': lambda x: ','.join(x)})
+
+1) Group by table name and index name, then join column name with ","
+  ==> output:   column1,column2,column3.....
+  
+2) backgroup, using this to generate a list of selected columns which used by a specific index
+
+
+
