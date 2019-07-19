@@ -26,4 +26,9 @@ UnicodeEncodeError: 'charmap' codec can't encode character '\x82' in position 14
          chunk[col_name] = re.sub(control_char, '', str(chunk[col_name])) 
    It will treat Series as a big string !!!
    
-   
+3) Prove to work version
+  chunk[col_name] = chunk[col_name].apply(lambda x: re.sub(r'[\x81|\x92]+','', x) if (x!=None and re.search(r'[\x81]+', x)) else x)
+  
+ Regulation expression such as [\x00-\x1F]+, [\x00-\xFF]+  seems not working !!
+ 
+ Also can't use str.encode('utf8') ==> change string to code such as 54ED78....
