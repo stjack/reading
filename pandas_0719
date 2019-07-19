@@ -1,0 +1,29 @@
+1. Question:
+   When try to insert data into Oracle 
+   
+      cursorOracle.executemany(ins2OraSQL, chunk.to_dict('records'))
+      
+   Get below error:
+      Traceback (most recent call last):
+  File "MF_ETL.py", line 225, in sybase_ETL_Oracle
+    cursorOracle.executemany(ins2OraSQL, chunk.to_dict('records'))
+  File "C:\SnapVolumesTemp\MountPoints\{553a9e41-a5ec-11e9-adcf-00505697c6b4}\SVROOT\UBS\Dev\lib\encodings\cp1252.py", line 12, in encode
+    return codecs.charmap_encode(input,errors,encoding_table)
+UnicodeEncodeError: 'charmap' codec can't encode character '\x82' in position 14: character maps to <undefined>
+
+
+2. Reason for error , one of column in Dataframe chunk include UTF8 contrl characters...
+
+3. Solution -> encoding str as UTF8
+ 0)  if char_err==True and col_type=='object':
+	  			chunk[col_name] = chunk[col_name].apply(lambda x: x.encode('utf-8') if (x != None) else x)
+   ==> This will increase size of string, since it re-encode all ascii str to UTF8!
+   
+1) First try, replace control char ==> failed ? ??
+         chunk[col_name] = chunk[col_name].str.replace(r'[\x00-\x1F]+', '')
+2) can't use re.sub on Dataframe!!!
+         control_char = re.compile(r'\\x[0123456789abcdef]+')
+         chunk[col_name] = re.sub(control_char, '', str(chunk[col_name])) 
+   It will treat Series as a big string !!!
+   
+   
