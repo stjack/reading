@@ -1,0 +1,40 @@
+https://docs.python.org/3/library/http.client.html ### ndg is implementation of httplib!!
+
+
+from ndg.httpsclient.https import HTTPSConnection
+
+## Issue: VERY VERY slow
+
+headers= {'Accept':'application/json', 'Content-Type': 'application/json' }
+def apiGet(endpoint,headersNew):
+	conn = HTTPSConnection(SERVER_ADDRESS,5412)
+	conn.request("GET", endpoint,"",  headers=headersNew)
+	response=conn.getresponse()
+	#print(response)
+	text=response.read()
+	jsonStr=str(text,'utf-8')
+	##print(jsonStr)
+	## loads: loading string to json !!!  load: loading dictionary to json object!!!
+	return json.loads(jsonStr)
+
+# Post Https...
+def apiPOST(endpoint,inJSON,nHeaders):
+	conn = HTTPSConnection(COLLIBRA_SERVER,5412)	
+	contentLen=len(str(inJSON))	
+	nHeaders.update({'Content-Length': str(contentLen)})
+
+	conn.request("POST", endpoint,inJSON,nHeaders)
+	response=conn.getresponse()
+	#print(response.status)
+	## Key ,using read() function to read text
+	text=response.read()
+	jsonStr=str(text,'utf-8')
+	return json.loads(jsonStr)
+
+## Another ,,ignore SSL certificate validation! VERY fast !!!
+
+	try:
+		response = requests.get(SERVER+endpoint, headers=headers, auth=("user","pass"), verify = False) 
+	except requests.exceptions.SSLError:
+		print('')
+	text=response.text	
