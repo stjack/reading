@@ -1,0 +1,25 @@
+https://stackoverflow.com/questions/43772362/how-to-print-a-specific-row-of-a-pandas-dataframe
+
+1. Using index to slicing dataframe by row or by column
+
+1) df.loc[row,column]  
+   
+    ==> df.loc[0,:] ## Return 1st row, all columns
+    
+    ==> df.loc[0,'column_name']  ## first row, specific columns
+    
+2) iloc    
+  
+  ==> df.iloc[0,0:3]  ==> For first row and some specific column i.e first three cols
+  
+3) ix  
+
+4)  df[df['domainName']=='Data Controls'].iloc[0]['domainID']
+  ==> a. Filter rows with column domainName =='Data Controls'
+         get value of column domainID of first row
+         
+         
+         
+         
+
+
