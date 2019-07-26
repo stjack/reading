@@ -1,0 +1,14 @@
+1. Create dictionary as row, then wrap-up all dictionary in a list !!!
+
+	list=[]
+	idx=1
+	for row in root:
+		dict={}
+		if row['type']['name']==assetType:
+			## create a row with two columns
+      dict['name']=row['displayName']
+			dict['id']=row['id']
+			list.append(dict)## Adding new row in list
+      
+  ## convert list into Dataframe in the end
+	dataFrame=pd.DataFrame(list)	
