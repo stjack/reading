@@ -1,0 +1,33 @@
+1. Change parallel degree from 1 -> 8
+
+-- join with no where condition,
+
+ALTER TABLE big001 PARALLEL 8
+ALTER TABLE big002 PARALLEL 8
+ALTER TABLE big003 PARALLEL 8
+
+select count(*) from   big001--11,552,983
+
+select count(*) from   big002 --7,770,997
+
+select count(*) from   big003 --11,552,950
+
+
+2. Before : parallel degree==1 => 4-5 hours ???
+   After:   parallel defree==8 => < 1m24s
+   
+select count(*) from(
+    SELECT *
+    FROM   big001 pc 
+        JOIN big002 p     ON pc.x1 = p.x1 
+        JOIN small001     ON pc.x2 = ccd.x3 AND    ccd.status = 'A' 
+        JOIN small002 cd     ON ccd.x3 = cd.x3 AND    cd.status = 'A' 
+        LEFT JOIN a003 a     ON a.x4 = pc.x4 AND    a.status = 'A' 
+        LEFT JOIN small003 country     ON a.x5 = country.x5 AND    country.status = 'A' 
+        LEFT JOIN small004 STATE     ON a.x6 = STATE.x6 AND    STATE.status = 'A' 
+        LEFT JOIN small005 city     ON a.x7 = city.x7 AND    city.status = 'A' 
+    WHERE
+      pc.status = 'A' AND
+      ccd.typ_cd = 'T0' AND
+      ccd.cd IN ('m1','m2')
+  )    
