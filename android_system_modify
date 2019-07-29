@@ -8,3 +8,7 @@ Make persistent changes to init.rc
 
 HOWTO: Unpack, Edit, and Re-Pack Boot Images
 3. http://android-dls.com/wiki/index.php?title=HOWTO:_Unpack%2C_Edit%2C_and_Re-Pack_Boot_Images#Background
+
+
+4. Android system resources files
+https://stackoverflow.com/questions/32021821/android-difference-between-a-system-resource-and-an-application-resource
