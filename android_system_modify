@@ -1,0 +1,10 @@
+Make persistent changes to init.rc
+1. https://stackoverflow.com/questions/9768103/make-persistent-changes-to-init-rc 
+   
+   adding custom init.rc
+   https://forum.xda-developers.com/showthread.php?t=2752005 
+
+2. https://android.googlesource.com/platform/system/core/+/master/init/README.md
+
+HOWTO: Unpack, Edit, and Re-Pack Boot Images
+3. http://android-dls.com/wiki/index.php?title=HOWTO:_Unpack%2C_Edit%2C_and_Re-Pack_Boot_Images#Background
