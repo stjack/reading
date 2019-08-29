@@ -1,0 +1,82 @@
+https://docs.oracle.com/cd/E11882_01/network.112/e40393/asotrans.htm#ASOAG600
+
+https://www.oracle.com/database/technologies/faq-tde.html
+
+How to use oracle wallet for JDBC and SQL*NET
+https://stackoverflow.com/questions/24160428/how-to-use-oracle-wallet
+
+1.Oracle Database 11g supports internal large object data types such as BLOB and CLOB. However, you cannot encrypt external LOBs (BFILE).
+
+
+2.Do not use transparent data encryption with the following database features:
+
+Index types other than B-tree
+Range scan search through an index
+External large objects (BFILE)
+Materialized View Logs
+Synchronous Change Data Capture
+Transportable Tablespaces
+Original import/export utilities
+
+
+3.Transparent data encryption is a key-based access control system. Even if the encrypted data is retrieved, it cannot be understood until authorized decryption occurs, which is automatic for users authorized to access the table.
+
+
+4. Using an external security module separates ordinary program functions from encryption operations....because the wallet password can be unknown to the database administrator, requiring the security administrator to provide the password.
+
+5.STEPS
+
+1) To create a new master key and begin using transparent data encryption, issue the following command   Enclose the password in double quotation marks (" ").:
+
+SQL> ALTER SYSTEM SET ENCRYPTION KEY ["certificate_ID"] IDENTIFIED BY "password"
+
+certificate_ID is an optional string containing the unique identifier of a certificate stored in the Oracle wallet. Use this parameter if you intend to use your PKI private key as your master encryption key. This parameter has no default setting. Enclose the certificate_ID in double quotation marks (" ").
+
+You can search for a certificate_ID by querying the V$WALLET fixed view when the wallet is open. Only certificates that can be used as master encryption keys by TDE are shown.
+
+2) To create a new table with encrypted columns, use the CREATE TABLE command in the following form:
+
+CREATE TABLE table_name ( column_name column_type ENCRYPT,....);
+
+3) use the ALTER TABLE command in the following form:
+
+ALTER TABLE table_name MODIFY ( column_name column_type ENCRYPT,...);
+
+
+4) The preceding command disables access to the master key in the wallet and prevents access to data in the encrypted columns. You need to open the wallet again, using the 
+
+ ALTER SYSTEM SET WALLET OPEN IDENTIFIED BY password command, 
+ 
+ to reenable access to the master encryption key.
+
+
+5) ORACLE Wallet
+
+The wallet location specified by the ENCRYPTION_WALLET_LOCATION parameter, in the sqlnet.ora parameter file, is used to create the master encryption key. 
+
+If the ENCRYPTION_WALLET_LOCATION parameter is not present in the sqlnet.ora file, then the WALLET_LOCATION value is used. A new wallet is created if one does not exist already.
+
+If no wallet location is specified in the sqlnet.ora file, then the default database wallet location is used. The default database wallet location is 
+
+ORACLE_BASE/admin/DB_UNIQUE_NAME/wallet or ORACLE_HOME/admin/DB_UNIQUE_NAME/wallet. 
+
+Here, DB_UNIQUE_NAME is the unique name of the database specified in the initialization parameter file.
+
+If an existing auto login wallet is present at the expected wallet location, then a new wallet is not created.
+
+
+6)  => 8.2.2.2 Resetting the Master Encryption Key
+ A.  Frequent master encryption key regeneration can exhaust all available storage space.
+ B.  https://docs.oracle.com/cd/E11882_01/network.112/e40393/asotrans.htm#BABCCDHA
+ c. SQL> ALTER SYSTEM SET ENCRYPTION KEY "************" IDENTIFIED BY "password";
+ 
+ 
+ 7) PERFORMANCE !!!!
+ http://www.dba-oracle.com/t_benchmark_tde_transparent_data_encryption.htm
+ 
+	Slower transaction throughput 
+	Less Disk Writes -
+	More CPU required
+ 8) FAQ  https://www.oracle.com/database/technologies/faq-tde.html
+ 
+ 9) 
