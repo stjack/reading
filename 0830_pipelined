@@ -1,0 +1,49 @@
+--http://www.dba-oracle.com/t_adv_plsql_declare_function_anonymous_block.htm
+--http://www.dba-oracle.com/plsql/t_plsql_parallel_functions.htm
+--https://decipherinfosys.wordpress.com/2008/08/28/back-to-the-basics-declaring-procedures-and-functions-in-anonymous-plsql-block/
+--https://stackoverflow.com/questions/32505663/pls-00231-function-may-not-be-used-in-sql
+
+!!!!!!!!!!!! This piece of code is NOT working, because pipelined function can not be called inside PL/SQL block !!!
+
+DECLARE
+   TYPE tab_rows IS TABLE OF T__________S%ROWTYPE;
+   all_rows tab_rows;
+   jmp  VARCHAR2(100);
+   sl_cursor  SYS_REFCURSOR;  
+    
+    FUNCTION PIPLINE_FX(
+       p_cursor IN SYS_REFCURSOR
+    ) RETURN tab_rows PIPELINED
+    IS
+      TYPE t_row IS TABLE OF T__________S%ROWTYPE;
+      rtn_rows t_row;
+    BEGIN
+        LOOP
+            FETCH p_cursor BULK COLLECT INTO rtn_rows LIMIT 100;
+            FOR idx IN 1.. rtn_rows.count
+            LOOP
+               PIPE ROW (rtn_rows(idx)); 
+            END LOOP;
+            EXIT WHEN p_cursor%NOTFOUND;
+        END LOOP;
+        EXCEPTION 
+            WHEN OTHERS THEN
+                DBMS_OUTPUT.PUT_LINE(SQLERRM);             
+    END; 
+    
+BEGIN
+
+   OPEN sl_cursor FOR
+         SELECT * FROM TABLE(
+            PIPLINE_FX(
+                CURSOR(SELECT * FROM T___________S)
+            )
+          );
+   RETURN  sl_cursor;   
+
+   --PIPLINE_FX(CURSOR(SELECT * FROM T___________S));
+      
+END;
+
+  
+
