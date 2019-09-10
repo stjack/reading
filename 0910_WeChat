@@ -1,3 +1,8 @@
 1. Check low level driver, such as /net/address.... make sure it return same value
 2. Check wpa_configuration file, WIFI name
    ==> same as WifiConfiguration class mocked
+
+
+3. Settings class -> name values pair ????
+
+4. Phone signal strength change ???
