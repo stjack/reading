@@ -1,0 +1,155 @@
+07-03
+
+1. What are Latches and What Causes Latch Contention (Pre-11g) (Doc ID 22908.1)
+
+https://support.oracle.com/epmos/faces/DocumentDisplay?_adf.ctrl-state=jn7ba8cxf_57&id=22908.1 
+
+1) Latch is independent with OS, enqueu is an OS specific locking mechanism !!!
+
+2) 
+
+
+2. Note 163424.1 How To Identify a Hot Block Within The Database Buffer Cache to correctly identify this issue.
+   Resolving Issues Where Waits for "latch: shared pool" are Seen (Doc ID 1477107.1)
+   Troubleshooting: Understanding and Tuning the Shared Pool (Doc ID 62143.1)
+   
+   
+************************************************   08-21   ************************************************
+
+1. Using AQ to implement Notification (asynchronized callback procedure)
+https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:9534024300346867942
+http://www.oracle-developer.net/display.php?id=411  ---clear example   
+---logic of callback example
+
+  1) Based on publish-> subscribe model
+
+
+https://asktom.oracle.com/pls/asktom/f?p=100:11:0::::P11_QUESTION_ID:8760267539329   --Ask TOM source
+
+
+https://docs.oracle.com/cd/E11882_01/server.112/e11013/aq_opers.htm#ADQUE2812 --Oracle Docs
+https://docs.oracle.com/cd/B28359_01/appdev.111/b28419/d_aq.htm#CBACFFBB  --DBMS_AQ  official docs
+
+VERY good whitepaper!!!
+https://www.oracle.com/technetwork/database/features/data-integration/oracle-aq-tech-wp11-2-191324.pdf
+
+2. AQ guide
+-AQ user guide
+https://docs.oracle.com/cd/E11882_01/server.112/e11013/manage.htm#ADQUE2581
+-AQ    management
+https://docs.oracle.com/cd/B28359_01/appdev.111/b28419/d_aqadm.htm#CACIJAJC
+
+AQ implements the message queuing functionality natively inside the database and leverages its easy manageability,high availability, high performance and security. 
+
+AQ supports point-to-point and publish/subscribe queues, persistent and buffered messaging, and message ordering priorities that offer flexibility and powerful messaging functionality to applications.
+
+Oracle technologies such as Data Guard, Real Application Clusters (RAC), Automatic Storage Management (ASM) can be combined with AQ to deliver a highly available and scalable messaging system.
+
+AQ messages can be created, queried, propagated and consumed using popular programming interfaces (API) such as PL/SQL, C/C++, Java and Visual Basic (Oracle Objects for OLE).
+
+AQ provides support for the Java Message Service (JMS) API that allows Java applications to utilize the message queuing functionality using the oracle.jms Java package.
+
+Buffered Messaging - performance improvement compared with persistent QUEUING
+
+--Message route
+Oracle Database 11g can also exchange AQ messages with IBM WebSphere MQ through the Oracle Messaging Gateway.
+
+--AQ supports two queue models, namely point-to-point and publish/subscribe queues. 
+	A message in the point-to-point can be dequeued only once.
+	Messages in a publish/subscribe queue can be dequeued by multiple consumers.
+
+	
+--Security model
+AQ also supports queue-level access control for enqueue and dequeue operations. Access to particular queues can be limited to only the applications running in the same schema.
+
+--Rules-based Message Routing
+The rules can be defined on message properties, message data content, or both.
+
+-- ***** Communicated with other JMS queue *****
+AQ can propagate messages from one queue to another queue in the same database or in a remote database. This allows applications to communicate asynchronously with each other in a distributed environment without being connected to the same database or to the same queue
+
+-- Operation of enqueue and dequeue
+		enqueue ==> select & insert
+		dequeue==> select & delete
+
+		
+-- Support Document 1163083.1
+
+
+-- Background of AQ, monitoring==> asynchronized callback...
+The queue monitor must also be running
+
+		
+--Oracle AQ to/from JMS
+-- 8. JMS Step 8 - How to Read from an AQ JMS (Advanced Queueing JMS) from a BPEL Process
+https://blogs.oracle.com/fusionmiddlewaresupport/jms-step-8-how-to-read-from-an-aq-jms-advanced-queueing-jms-from-a-bpel-process-v2
+
+
+--Oracle AQ, Weblogic & JMS client integration...
+https://technology.amis.nl/2010/09/18/oracle-advanced-queuing-and-jms-bridging-from-aq-to-jms-and-vice-versa/
+--Oracle weblogic with AQ
+https://docs.oracle.com/cd/E15523_01/web.1111/e13738/aq_jms.htm#JMSAD576
+
+-- Java example: How to enqueue a JMS message into Oracle AQ using Java
+https://stackoverflow.com/questions/20497391/how-to-enqueue-a-jms-message-into-oracle-aq-using-java
+
+
+************************************************   08-22   ************************************************
+Keys for PL/SQL call-back functions
+
+1. Online re-define table to partitioned table
+https://docs.oracle.com/cd/B28359_01/appdev.111/b28419/d_redefi.htm#i1001131
+https://docs.oracle.com/en/database/oracle/oracle-database/12.2/vldbg/evolve-nopartition-table.html#GUID-5C0F8D12-DDDF-42AB-B644-1880156832BC
+
+************************************************   08-23   ************************************************
+1. Freelist
+
+
+************************************************   08-29 Pipelined & table function   ************************************************
+
+
+************************************************   09-09 Transaction   ************************************************
+https://docs.oracle.com/database/121/CNCPT/transact.htm#CNCPT016
+https://docs.oracle.com/database/121/CNCPT/consist.htm#CNCPT121
+1) Transaction-Level Read Consistency ==> For example, a transaction that updates employees and then queries employees will see the updates. 
+    ==> in same transaction, query can read un-committed data inside this transaction
+
+	
+1) Build in CallInfo class ==> simulate incoming call	
+https://github.com/FrankKwok/Oreo/blob/1dd70681863dc98bf53c960a7d17410759348abd/com/android/internal/telephony/test/SimulatedGsmCallState.java	
+
+https://github.com/FrankKwok/Oreo/blob/1dd70681863dc98bf53c960a7d17410759348abd/com/android/internal/telephony/Call.java
+
+Monitoring
+https://github.com/FrankKwok/Oreo/blob/1dd70681863dc98bf53c960a7d17410759348abd/com/android/internal/telephony/DefaultPhoneNotifier.java
+
+
+example on using  simulateCallState????
+https://github.com/FrankKwok/Oreo/blob/1dd70681863dc98bf53c960a7d17410759348abd/com/android/internal/telephony/test/SimulatedCommands.java
+
+Chinese
+http://www.voidcn.com/article/p-bfampbof-zq.html
+Simulating incoming call
+https://blog.csdn.net/firedancer0089/article/details/72152530
+
+	==> https://android.googlesource.com/platform/packages/services/Telecomm/+/master/testapps/src/com/android/server/telecom/testapps/TestInCallServiceImpl.java
+	
+	https://www.cnblogs.com/hoji-real/articles/2291228.html
+	
+Android 7.0 simulating incoming call
+	https://blog.csdn.net/ygd11/article/details/83748597
+https://www.cnblogs.com/kevincode/p/3829443.html	
+
+Create a virtual Phone object   *******  Read this firstly !!!!
+https://stackoverflow.com/questions/2143754/can-a-telephony-phone-object-be-instantiated-through-the-sdk
+
+
+
+2) Build Phone call notification
+https://github.com/FrankKwok/Oreo/blob/1dd70681863dc98bf53c960a7d17410759348abd/com/android/internal/telephony/DefaultPhoneNotifier.java
+
+3) Kernel format ???
+https://github.com/FrankKwok/Oreo/blob/1dd70681863dc98bf53c960a7d17410759348abd/com/android/settingslib/DeviceInfoUtils.java
+
+4) Replace default Call App
+https://stackoverflow.com/questions/48153516/replace-default-phone-app
