@@ -1,0 +1,24 @@
+
+
+1. Pandas APPLY function
+ https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.apply.html#pandas.DataFrame.apply
+ Apply a function along an axis of the DataFrame.
+
+Objects passed to the function are Series objects whose index is either the DataFrame’s index (axis=0) or the DataFrame’s columns (axis=1). By default (result_type=None), the final return type is inferred from the return type of the applied function. Otherwise, it depends on the result_type argument.
+
+1) When we MUST use axis=1 ??? ==> lambda x: -> When x is a series => axis=1 used -> because we should use axis parameter to let pandas know that lambda applied on coloumn of Dataframe !!
+
+	mt_tabs=mt_tabs_comp[mt_tabs_comp.apply(lambda x:  x['_merge']=='both',axis=1 )]
+
+2) In below situation, x is a string (because x['SYSTEM_TYPE'] -> is a string !!!)
+##	TypeError: string indices must be integers  ==> x is simply a string, x['SYSTEM_TYPE'] has no value !!!
+try:
+	mt_tabs_comp['DRIVER_IND']=mt_tabs_comp['SYSTEM_TYPE'].apply(lambda x: 'Y' if (x=='both') else 'N' )
+except Exception as error:
+	traceback.print_exc()
+
+3) lambda as a filter 
+## Key of apply() function-> apply function returns a boolean which can be used to filter.
+#    https://towardsdatascience.com/apply-and-lambda-usage-in-pandas-b13a1ea037f7
+
+mt_tabs=mt_tabs_comp[mt_tabs_comp.apply(lambda x:  x['_merge']=='both',axis=1 )]
