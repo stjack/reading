@@ -22,3 +22,8 @@ except Exception as error:
 #    https://towardsdatascience.com/apply-and-lambda-usage-in-pandas-b13a1ea037f7
 
 mt_tabs=mt_tabs_comp[mt_tabs_comp.apply(lambda x:  x['_merge']=='both',axis=1 )]
+
+4) How to use multiple if-elif-else
+  Key: combine multiple if-else
+
+	em_tables_comp['SYSTEM_TYPE']=em_tables_comp['SYSTEM_TYPE'].apply(lambda x: 'PUDDLE' if ( x=='left only') else ('SOURCE' if x=='right only'  else 'SOURCE_PUDDLE')  )
