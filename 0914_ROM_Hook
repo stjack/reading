@@ -1,0 +1,8 @@
+2. 内置Hook，建议在attachBaseContext方法里调用。
+
+https://blog.csdn.net/TuringTechnician/article/details/88613555
+
+//内置Hook，都位于当前ClassLoader
+FastHookManger.doHook("hookInfoClassName",null,null,null,null,false);
+
+就是说可以直接改ROM的代码，可以把hook微信的代码加入进去！！
