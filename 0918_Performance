@@ -1,0 +1,33 @@
+1. Change join type from NL (nested loop) to sort ordered join==> 15min to 3 seconds
+
+with t1 as (
+  select date1, kde,column1 
+  from big_mv1 where condition1
+),
+t2 as(
+   select date1, kde,column2 ....
+  from big_mv1 where condition2
+)
+select * 
+from t1,t2 
+where 
+  t1.kde=t2.kde
+and t1.date1.t2.date1
+
+
+##
+Issue: if there is only one where condition, speed fast
+    if date1 condition added, performance poor
+    
+execution plan:
+  NL : t1 & t2
+  
+Solution,
+ adding 
+      order by date1, kde for both t1 & t2
+ adding      
+ /*+ use_merge(t1,t2) */   for main select 
+ 
+ 15min to 3 seconds
+
+For two small table join, sort order obvious  MUCH fast than NL (8000*1000==> almost 1 million )
