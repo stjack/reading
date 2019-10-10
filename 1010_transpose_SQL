@@ -1,0 +1,29 @@
+https://oracle-base.com/articles/11g/pivot-and-unpivot-operators-11gr1#unpivot
+--- Multiple columns change to multiple rows: column-> row
+--Using decode,
+SELECT id,
+       customer_id,
+       DECODE(unpivot_row, 1, 'A',
+                           2, 'B',
+                           3, 'C',
+                           4, 'D',
+                           'N/A') AS product_code,
+       DECODE(unpivot_row, 1, product_code_a,
+                           2, product_code_b,
+                           3, product_code_c,
+                           4, product_code_d,
+                           'N/A') AS quantity
+FROM   unpivot_test,
+       -- build a full outer join, one row change to four rows
+       (SELECT level AS unpivot_row FROM dual CONNECT BY level <= 4)
+ORDER BY 1,2,3;
+
+
+--unpivot function example
+--Key:   FOR .. IN used to transpose column
+SELECT   
+   mapping_id,classification_type,classification_code
+FROM rds_******_ta***** 
+UNPIVOT ( classification_type FOR classification_code  IN (GIC2 AS 'GIS2', NACE AS 'NACE', 
+            BOE AS 'BOEINST', SBC AS 'SBC', COMPREL as 'COMPREL', CAPITL  as 'CAPITL' ,CPTYPE as 'CPTYPE')
+) 
