@@ -24,3 +24,10 @@
   https://github.com/icefreedom/v4l2virtualdevice_android
   
  https://github.com/stjack/v4l2loopback
+
+
+Virtual pre-view ??
+https://stackoverflow.com/questions/6165618/how-to-mock-a-picture-in-android-emulator-camera
+http://www.tomgibara.com/android/camera-source
+
+https://stackoverflow.com/questions/20618296/android-inject-fake-camera-preview-for-testing-purpose/38456086#38456086
