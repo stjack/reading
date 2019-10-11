@@ -21,6 +21,7 @@ ORDER BY 1,2,3;
 
 --unpivot function example
 --Key:   FOR .. IN used to transpose column
+--classification_type & classification_code  are self defined column names, can be recognized in select part....
 SELECT   
    mapping_id,classification_type,classification_code
 FROM rds_******_ta***** 
