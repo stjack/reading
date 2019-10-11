@@ -16,3 +16,11 @@
   https://github.com/chenguangxiang/mjpg-streamer
   https://github.com/chenguangxiang/simplewebcam
   
+  
+  
+  Low level web cam
+  
+  https://stackoverflow.com/questions/35480034/how-to-simulate-a-webcam-device
+  https://github.com/icefreedom/v4l2virtualdevice_android
+  
+ https://github.com/stjack/v4l2loopback
