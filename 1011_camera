@@ -1,0 +1,18 @@
+1. https://stackoverflow.com/questions/8543244/custom-camera-android
+
+  https://demonuts.com/android-custom-camera/
+  https://android.jlelse.eu/camera-2-api-for-android-2dc3168b29a9
+  https://github.com/davidgatti/dgCam
+  
+  
+  How to call camera in Android
+  https://developer.android.com/training/camera/photobasics
+  
+  Adding a flag in configuration file, search Tencent source code, replace camera data with image data !!!
+  
+  External USB camera support
+  https://source.android.com/devices/camera/external-usb-cameras
+  
+  https://github.com/chenguangxiang/mjpg-streamer
+  https://github.com/chenguangxiang/simplewebcam
+  
