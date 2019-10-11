@@ -1,0 +1,4 @@
+http://www.itpub.net/thread-2101298-1-6.html
+
+1) Buffer changed (not saved) ==> dirty block, up-to-date data block , contains changes
+2) Different checkpoint SCN used for consistence check...
