@@ -1,0 +1,37 @@
+https://discuss.96boards.org/t/getting-camera-stream-data-to-virtual-node-created-using-v4l2loopback/5082
+
+1) if you have loopback devices you should be able to feed your devices with gstreamer
+gst-launch-1.0 v4l2src device=/dev/video0 ! tee name=t ! queue ! v4l2sink device=/dev/video1 t. ! queue ! v4l2sink device=/dev/video2
+
+
+https://stackoverflow.com/questions/5912822/what-is-the-android-equivalent-of-dev-video0-for-tablet-camera
+1)ffmpeg -f video4linux2 -i /dev/video0 out.mpeg
+
+--- Virtual cam usage ???
+https://askubuntu.com/questions/881305/is-there-any-way-ffmpeg-send-video-to-dev-video0-on-ubuntu
+-- test case???
+http://plan4acer.blogspot.com/2012/06/android-ip-webcam-v4l2loopback-test.html
+
+https://raffaels-blog.de/en/post/fake-webcam/
+
+ffmepg streaming to remote device
+https://www.acmesystems.it/ffmpeg
+
+Python example and error correction
+https://github.com/umlaeute/v4l2loopback/issues/151
+
+Using an Android device as a webcam for Linux
+https://blog.sysx.no/2018/02/12/using-an-android-device-as-a-webcam-for-linux/
+
+
+https://stackoverflow.com/questions/12278688/canon-dslr-video-loop-back-using-v4l2loopback-and-edsdk-liveview
+--command to use 
+modprobe v4l2loopback
+
+gphoto2 --stdout --capture-movie | gst-launch-1.0 fdsrc fd=0 ! decodebin name=dec ! queue ! videoconvert ! tee ! v4l2sink device=/dev/video0
+
+
+Android emulator+virtual camera
+https://github.com/tulir/mautrix-whatsapp/wiki/Android-VM-Setup
+API
+https://linuxtv.org/downloads/v4l-dvb-apis/
