@@ -1,0 +1,57 @@
+Oneplus3 custom kernel installation
+https://www.androidexplained.com/oneplus-3-install-custom-kernel/
+https://github.com/flar2/android_kernel_oneplus_msm8996
+https://forum.xda-developers.com/oneplus-3/development/kernel-elementalx-op3-0-01-t3404879
+
+https://elinux.org/UDOO_Camera_Module
+
+Android gstreamer ??? route video???
+https://gstreamer.freedesktop.org/documentation/tutorials/android/index.html?gi-language=c
+http://www.einarsundgren.se/gstreamer-basic-real-time-streaming-tutorial/
+
+************************ Android Camera streaming ??? 
+https://github.com/justinjoy/gst-android-camera
+
+
+1. Oneplus 3 official kernel
+https://github.com/msfjarvis/oneplus3   ??
+
+--oneplus3 code tree ???
+https://github.com/LineageOS/android_device_oneplus_oneplus3
+
+
+2.Official Google kernel build
+https://source.android.com/setup/build/building-kernels
+https://stackoverflow.com/questions/23453167/build-loadable-kernel-module-while-building-android-custom-rom
+
+3.Official Oneplus3 kernel code
+https://github.com/android-linux-stable/op3
+
+4. Write kernel module
+https://abdullahyousafzaii.wordpress.com/2015/08/02/how-to-write-a-kernel-module-for-android/
+
+v4l2 driver works android installation ???
+https://blog.sysx.no/2018/02/12/using-an-android-device-as-a-webcam-for-linux/
+
+
+https://stackoverflow.com/questions/6165618/how-to-mock-a-picture-in-android-emulator-camera
+
+Possible Java layer ???Check wechat's scan code...
+
+http://www.tomgibara.com/android/camera-source
+
+5.Android multi camera support
+https://source.android.com/devices/camera/multi-camera
+
+*****   Android HAL driver ???
+https://github.com/antmicro/android-camera-hal
+
+https://github.com/rockcarry/v4l2test
+
+More likely for android installation ?? v4l2loopback driver??
+https://github.com/icefreedom/v4l2virtualdevice_android/blob/master/Makefile
+
+
+https://blog.bigdotsoftware.pl/android-and-raspberry-pi-camera-low-no-latency-via-gstreamer/
+https://blogfarad.wordpress.com/2017/03/05/wireless-streaming-in-android-using-gstreamer/
+https://justinjoy9to5.blogspot.com/2017/10/gstreamer-camera-2-source-for-android.html
