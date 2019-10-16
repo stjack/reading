@@ -1,0 +1,12 @@
+高通驱动的KConfig文件，用于配置内核的
+https://github.com/torvalds/linux/blob/master/drivers/media/v4l2-core/Kconfig
+加载自己的驱动
+https://my.oschina.net/f839903061/blog/95895
+内核编译方法
+http://www.520monkey.com/archives/881
+
+Android驱动简述
+https://blog.csdn.net/RadianceBlau/article/details/79515317
+https://my.oschina.net/jerikc/blog/185917
+Camera类
+http://www.kohn.com.cn/wordpress/?p=267#sec-4
