@@ -1,0 +1,21 @@
+1. https://docs.sqlalchemy.org/en/13/core/connections.html  -> SQLAlchemy : Python ORM 
+   http://initd.org/psycopg/docs/connection.html			-> Psycopg2   : PostgreSQL python modules
+2. PostgreSQL using % to bind variable with value   , Oracle using :
+
+3. TypeError: 'dict' object does not support indexing
+ Solution:
+	https://stackoverflow.com/questions/38090730/typeerror-dict-object-does-not-support-indexing-thrown-on-second-instance-of/38091485
+	
+4. postgresql insert...
+	http://initd.org/psycopg/docs/usage.html#query-parameters
+
+5. Batch insert
+https://stackoverflow.com/questions/8134602/psycopg2-insert-multiple-rows-with-one-query	
+ 1) Build a list of turples
+    listChunk=[tuple(x) for x in chunk.values]
+ 2) Using execute_batch to insert chunk of data 
+  http://initd.org/psycopg/docs/extras.html => fast execution helper!!!
+	psycopg2.extras.execute_batch(cursorPost,ins2PostgreSQL,listChunk)
+ 3) Batch copying data from file to table
+http://initd.org/psycopg/docs/cursor.html?highlight=copy_from#cursor.copy_from
+ 
