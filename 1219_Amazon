@@ -1,3 +1,13 @@
 1.  How to implement Amazon S3 notification ==> user upload ==> notify to client
 
 https://stackoverflow.com/questions/8674561/get-notified-when-user-uploads-to-an-s3-bucket
+
+
+2. Amazon client
+
+https://github.com/nimran/Amazon-S3-Integration-in-Android
+
+3. Amazon SQS messaging 
+
+https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/examples-sqs-messages.html
+
