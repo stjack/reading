@@ -6,8 +6,21 @@ https://stackoverflow.com/questions/8674561/get-notified-when-user-uploads-to-an
 2. Amazon client
 
 https://github.com/nimran/Amazon-S3-Integration-in-Android
+https://github.com/awslabs/aws-sdk-android-samples/blob/master/S3TransferUtilitySample/S3TransferUtilityTutorial.md
+
 
 3. Amazon SQS messaging 
 
 https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/examples-sqs-messages.html
+
+Amazon messaging lib
+
+https://github.com/awslabs/amazon-sqs-java-messaging-lib
+
+4. S3 event notification
+
+https://stackoverflow.com/questions/8674561/get-notified-when-user-uploads-to-an-s3-bucket
+https://aws.amazon.com/blogs/aws/s3-event-notification/
+https://docs.aws.amazon.com/sdk-for-ruby/v3/developer-guide/s3-example-add-notification.html
+
 
